@@ -1,0 +1,31 @@
+div.w-72.h-screen.p-3.shadow-md.flex.flex-col.justify-between
+    div
+        img.w-48(src="/images/logo.png" alt="logo")
+        ul.mt-3.p-2
+            li.cursor-pointer.p-2.transition.duration-300.rounded-lg(class=`${currentPage === 'home' ? 'active-menu' : '' } hover:active-menu`)
+                a.gap-x-3.flex.items-center(href="/admin/dashboard") 
+                    i.fa-solid.fa-house
+                    span.select-none Home
+
+            li.cursor-pointer.p-2.mt-1.transition.duration-300.rounded-lg(class=`${currentPage === 'product' ? 'active-menu' : '' } hover:active-menu`)
+                a.gap-x-3.flex.items-center(href="/admin/dashboard/manage-products") 
+                    i.fa-solid.fa-mortar-pestle
+                    span.select-none Manage products
+
+            li.cursor-pointer.p-2.mt-1.transition.duration-300.rounded-lg(class=`${currentPage === 'customers' ? 'active-menu' : '' } hover:active-menu`)
+                a.gap-x-3.flex.items-center(href="/admin/dashboard/customers") 
+                    i.fa-solid.fa-user
+                    span.select-none Customers
+
+            li.cursor-pointer.p-2.mt-1.transition.duration-300.rounded-lg(class=`${currentPage === 'sales' ? 'active-menu' : '' } hover:active-menu`)
+                a.gap-x-3.flex.items-center(href="/admin/dashboard/sales-report") 
+                    i.fa-solid.fa-money-check-dollar
+                    span.select-none Sales report
+    div.flex.justify-between
+        div.flex.gap-x-3.items-center.cursor-pointer
+            i.fa-solid.fa-gear
+            span Settings
+
+        div.flex.gap-x-3.items-center.cursor-pointer
+            i.fa-solid.fa-right-from-bracket
+            span Logout

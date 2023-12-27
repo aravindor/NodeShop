@@ -1,0 +1,45 @@
+{
+  "name": "nodeshop",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "watch": "nodemon -e js,pug ./bin/www",
+    "build:css": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css",
+    "watch:css": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css --watch"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.7.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "fs": "^0.0.1-security",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "mysql2": "^3.6.5",
+    "path": "^0.12.7",
+    "postcss-cli": "^11.0.0",
+    "prisma": "^5.7.0",
+    "pug": "2.0.0-beta11"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "connect-livereload": "^0.6.1",
+    "livereload": "^0.9.3",
+    "nodemon": "^3.0.2",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.3.5"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jw1219/create-pug-tailwindcss-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jw1219/create-pug-tailwindcss-app/issues"
+  },
+  "homepage": "https://github.com/jw1219/create-pug-tailwindcss-app#readme",
+  "description": ""
+}

@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  nav.p-2.flex.flex-row.justify-between.items-center
+    div
+      img.w-48(src="images/logo.png" alt="logo")
+    div
+      ul.flex.space-x-10
+        li(class="hover:underline")
+          a(href="#") Home
+        li(class="hover:underline")
+          a(href="#") Spices
+        li(class="hover:underline")
+          a(href="#") Gift Sets & Kits
+        li(class="hover:underline")
+          a(href="#") Kitchen Essentials
+        li(class="hover:underline")
+          a(href="#") About us
+    div.flex.flex-row.items-center
+      i.fa-solid.fa-cart-shopping.mr-5(aria-hidden='true') 
+      i.fa-solid.fa-user(aria-hidden='true') 
+      a.ml-3(href="#")  Login
+
+      
+      
