@@ -17,19 +17,20 @@ model Category {
 }
 
 model Spices {
-  id          String   @id @default(uuid())
-  name        String   @unique
+  id          String     @id @default(uuid())
+  name        String     @unique
   origin      String?
-  description String?
+  description String?    @db.VarChar(1000)
   aroma       String?
-  heatLevel   Int?
+  heatLevel   String
   categoryId  String
-  category    Category @relation(fields: [categoryId], references: [id])
-  giftSets GiftSets[]
+  image       String?
+  category    Category   @relation(fields: [categoryId], references: [id])
+  giftSets    GiftSets[]
 }
 
 model GiftSets {
-  id   String @id @default(uuid())
-  name String @unique
+  id     String   @id @default(uuid())
+  name   String   @unique
   spices Spices[]
 }

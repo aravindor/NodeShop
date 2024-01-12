@@ -8,4 +8,36 @@
     .active-menu{
         @apply bg-black text-white
     }
+    .outline-button{
+        @apply bg-transparent hover:bg-gray-800 text-black font-semibold hover:text-white py-1 px-2 border border-gray-800 hover:border-transparent rounded
+    }
+    .input-label{
+        @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white
+    }
+    .input-field{
+        @apply  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5
+    }
+    .file-input-field{
+        @apply  block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+    }
+    .alert-success{
+        @apply p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50;
+        position: fixed;
+        bottom: 2rem; 
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+    }
+    .alert-error{
+        @apply p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50;
+        position: fixed;
+        bottom: 2rem; 
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+    }
+    .card{
+        @apply block max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100
+    }
+    
 }

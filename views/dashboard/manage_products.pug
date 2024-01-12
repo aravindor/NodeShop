@@ -1,4 +1,60 @@
 extends dashboard_layout 
+include ../components/modal
+
 
 block dashboard_content
-    div.h-screen.p-3 Manage products
+    script(src="/javascripts/modal/modalOpen.js" type="text/javascript") 
+    .h-screen.p-3
+        button.outline-button(onclick="showModal('addCategory')") Add categories
+        .h-36.flex.flex-row.items-center.space-x-2
+            each category in categories 
+                .card.h-24.flex.flex-col.justify-center.p-6
+                    h2.text-lg #{category.name}
+        button.outline-button(onclick="showModal('addProducts')") Add product
+        .flex.flex-row.justify-center.py-2.space-x-2
+            each spice in spices 
+                .card.flex.flex-col.w-72
+                    img.h-44.rounded-t-lg.object-cover(src=`/images/uploads/${spice.image}`, alt="Image")
+                    h2.text-lg.m-2 #{spice.name}
+                    a.self-center.p-3.text-lg.font-bold(href="#") View
+    +modal('addCategory','categoryClose','Add category')
+        form(action="/admin/dashboard/create-category" method="post") 
+            .mb-6
+                label.input-label(for='cat-name') Name
+                input#cat-name.input-field(type='text' name="name")
+            button.outline-button.px-5(type="submit") Submit
+
+    +modal('addProducts','productClose','Add products')
+        form(action="/admin/dashboard/create-product" method="post" enctype="multipart/form-data") 
+            .mb-6
+                label.input-label(for='prod-name') Name
+                input#prod-name.input-field(type='text' name='name')
+                label.input-label(for='prod-cat') Category
+                select#prod-cat.input-field(type='text' name='category')
+                    each category in categories 
+                        option(value=category.id) #{category.name}
+                label.input-label.mt-2(for='prod-origin',,name='origin') Origin
+                input#prod-origin.input-field(type='text')
+                label.input-label.mt-2(for='description') Description
+                textarea#description.input-field(type='text' rows=4,name='description')
+                label.input-label.mt-2(for='aroma') Aroma
+                input#aroma.input-field(type='text' name='aroma')
+                label.input-label.mt-3(for='heatLevel') HeatLevel
+                select#heatLevel.input-field(type='text' name='heatLevel')
+                    option(value="Mild") Mild
+                    option(value="Moderate") Moderate
+                    option(value="Medium-Hot") Medium-Hot
+                    option(value="Hot") Hot
+                    option(value="Very Hot") Very Hot
+                    option(value="Extreme") Extreme
+                label.input-label.mt-3(for='image') Image
+                input#image.input-field(type='file' name='image')
+            button.outline-button.px-5 Submit
+
+    if query.success
+        .alert-success(role="alert") #{query.success}
+    if query.error
+        .alert-error(role="alert") #{query.error}
+
+
+

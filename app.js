@@ -13,7 +13,7 @@ var adminRouter = require("./routes/admin");
 const publicDir = path.join(__dirname, "public");
 const viewDir = path.join(__dirname, "views");
 const liveReloadServer = livereload.createServer();
-liveReloadServer.watch([publicDir,viewDir]);
+liveReloadServer.watch([publicDir, viewDir]);
 
 var app = express();
 liveReloadServer.server.once("connection", () => {
