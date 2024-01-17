@@ -34,3 +34,12 @@ model GiftSets {
   name   String   @unique
   spices Spices[]
 }
+
+// Accounts
+
+model User {
+  id       String  @id @default(uuid())
+  username String  @unique
+  password String
+  isAdmin  Boolean @default(false)
+}

@@ -1,0 +1,23 @@
+extends ../layout.pug 
+
+block content
+    .flex.flex-col.justify-center.items-center.h-screen
+        .card.p-5.w-96
+            h3.text-xl.font-bold Login
+            hr.mt-3.mb-3
+            form(action="" method="post")
+                label.input-label(for='username') Username
+                input#username.input-field(type='text' name='username' required)
+                label.input-label(for='password') Password
+                input#password.input-field(type='password' name='password' required)
+                .flex.flex-row.mt-3.items-center
+                    input#remember-me.w-4.h-4.text-blue-600.bg-gray-100.border-gray-300.rounded(type="checkbox" name="remember")
+                    label.ms-3(for="remember-me" ) Remember me
+                .flex.flex-row.mt-3.items-center
+                    button.outline-button.px-10(action="submit") Login
+                    a.ms-3.font-bold(href="/register")  Register now
+    if success
+        .alert-success(role="alert") #{success}
+    if error
+        .alert-error(role="alert") #{error}
+

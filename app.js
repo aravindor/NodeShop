@@ -5,10 +5,12 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var livereload = require("livereload");
 var connectLivereload = require("connect-livereload");
+const session = require('express-session');
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var adminRouter = require("./routes/admin");
+
 
 const publicDir = path.join(__dirname, "public");
 const viewDir = path.join(__dirname, "views");
@@ -32,9 +34,25 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(publicDir));
 
+app.use(session({
+  secret: 'jgZYU9zPmilOChvMRVn2HOpvTB2ndCVq',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false, maxAge: null }, // Session cookie (closes when the browser is closed)
+}));
+
+const isAdmin = (req, res, next) => {
+  if (req.session.user?.isAdmin) {
+    return next();
+  } else {
+    res.redirect('/login');
+  }
+};
+
+
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/admin", adminRouter);
+app.use("/admin",isAdmin, adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -18,8 +18,11 @@ block content
           a(href="#") About us
     div.flex.flex-row.items-center
       i.fa-solid.fa-cart-shopping.mr-5(aria-hidden='true') 
-      i.fa-solid.fa-user(aria-hidden='true') 
-      a.ml-3(href="#")  Login
+      i.fa-solid.fa-user(aria-hidden='true')
+      if isAuthenticated
+        a.ml-3(href="/logout")  Logout
+      else
+        a.ml-3(href="/login")  Login
 
       
       
